@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.min.js" defer></script>
+</head>
+<body>
+  <div x-data="start()">
+    <header>
+      <nav>
+        <a href="#" @click.prevent="transition('page1')">Login Page</a>
+        <a href="#" @click.prevent="transition('page2')">Input Page</a>
+        <a href="#" @click.prevent="transition('page3')">Search Page</a>
+        <a href="#" @click.prevent="transition('page4')">Home Page</a>
+      </nav>
+    </header>
+    <section>
+      <div x-show="page === 'page1'">
+        Login Page
+      </div>
+      <div x-show="page === 'page2'">
+        Input Page
+      </div>
+      <div x-show="page === 'page3'">
+        Search Page
+      </div>
+      <div x-show="page === 'page4'">
+        Home Page
+      </div>
+    </section>
+    <footer>
+      Footer
+    </footer>
+  </div>
+<script>
+function start() {
+  return {
+    page: "",
+    transition(pageName) {
+      this.page = pageName
+    }
+  }
+}
+</script>
+</body>
+</html>

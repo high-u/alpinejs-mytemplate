@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.min.js" defer></script>
+</head>
+<body>
+  <div x-data="start()" x-init="fetchHtml('login')">
+    <header>
+      Header
+    </header>
+    <nav>
+      <a href="#" @click.prevent="fetchHtml('login')">Login Page</a>
+      <a href="#" @click.prevent="fetchHtml('input')">Input Page</a>
+      <a href="#" @click.prevent="fetchHtml('search')">Search Page</a>
+      <a href="#" @click.prevent="fetchHtml('home')">Home Page</a>
+    </nav>
+    <section>
+      <div x-html="page"></div>
+    </section>
+    <footer>
+      Footer
+    </footer>
+  </div>
+<script>
+function start() {
+  return {
+    page: "",
+    fetchHtml(pageName) {
+      const file = `./pages/${pageName}.html`
+      fetch(file).then((result) => result.text())
+      .then((page) => {
+          this.page = page;
+      })
+    }
+  }
+}
+</script>
+</body>
+</html>

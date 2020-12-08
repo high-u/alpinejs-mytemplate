@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.min.js" defer></script>
+</head>
+<body>
+  <div x-data="start()" x-init="init()">
+    <template x-if="login">
+      <div x-show="page === 'page1'">
+        Login Page
+        <a href="#" @click.prevent="transition('page2')">Login</a>
+      </div>
+    </template>
+    <template x-if="!login">
+      <div>
+        <header>
+          <nav>
+            <a href="#" @click.prevent="transition('page2')">Input Page</a>
+            <a href="#" @click.prevent="transition('page3')">Search Page</a>
+            <a href="#" @click.prevent="transition('page4')">Home Page</a>
+            <a href="#" @click.prevent="transition('page1')">Logout</a>
+          </nav>
+        </header>
+        <section>
+          <div x-show="page === 'page2'">
+            Input Page
+          </div>
+          <div x-show="page === 'page3'">
+            Search Page
+          </div>
+          <div x-show="page === 'page4'">
+            Home Page
+          </div>
+        </section>
+        <footer>
+          Footer
+        </footer>
+      </div>
+    </template>
+  </div>
+<script>
+function start() {
+  return {
+    page: "",
+    login: true,
+    init() {
+      this.page = "page1"
+      this.login = true
+    },
+    transition(pageName) {
+      this.page = pageName
+      switch (pageName) {
+        case "page1":
+          this.login = true
+          break;
+        default:
+          this.login = false
+      }
+    }
+  }
+}
+</script>
+</body>
+</html>

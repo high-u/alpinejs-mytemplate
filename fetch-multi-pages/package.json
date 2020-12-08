@@ -1,0 +1,9 @@
+{
+
+  "scripts": {
+    "dev": "browser-sync start --server --cors --files ./"
+  },
+  "dependencies": {
+    "browser-sync": "^2.26.13"
+  }
+}
